@@ -50,8 +50,21 @@ const add = (x, y) => x + y;
 const sub = (x, y) => x - y;
 console.log(add(1, 2));
 // classes
-yoyo = ["yoyo", "yoyo", "yoyo"];
-employeeArr = [[1, "Rohan"], [2, "Chelsey"]];
-console.log(employeeArr);
-console.log(user2.name);
-console.log(ids);
+// They are used to create objects 
+// So we can create multiple Person objects
+class Person {
+    constructor(id, name, age, birthDate) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.birthDate = birthDate;
+    }
+}
+const user = new Person(1, "Rohan", 25, new Date("09/01/1998"));
+// user.id = 2
+console.log(user);
+// yoyo = ["yoyo", "yoyo", "yoyo"]
+// employeeArr = [[1, "Rohan"], [2, "Chelsey"]]
+// console.log(employeeArr)
+// console.log(user2.name)
+// console.log(ids)

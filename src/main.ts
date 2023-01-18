@@ -61,7 +61,7 @@ function log(message: string | number): void{
 // Interface is basically a custom type
 
 interface UserIterface {
-	readonly id: number // readonly property cannor be changed
+	readonly id: number // readonly property cannot be changed
 	name: string
 	age?: number // make it optional
 }
@@ -83,16 +83,32 @@ console.log(add(1,2))
 
 
 // classes
+// They are used to create objects 
+// So we can create multiple Person objects
+class Person {
+	private id: number
+	protected name: string // any class that extends this
+	age: number
+	birthDate: Date
 
+	constructor(id: number, name: string, age: number, birthDate: Date) {
+		this.id = id
+		this.name = name
+		this.age = age
+		this.birthDate = birthDate
+	}
+}
 
+const user = new Person(1, "Rohan", 25, new Date("09/01/1998"))
+// user.id = 2
+console.log(user)
 
+// yoyo = ["yoyo", "yoyo", "yoyo"]
 
-yoyo = ["yoyo", "yoyo", "yoyo"]
+// employeeArr = [[1, "Rohan"], [2, "Chelsey"]]
 
-employeeArr = [[1, "Rohan"], [2, "Chelsey"]]
+// console.log(employeeArr)
+// console.log(user2.name)
 
-console.log(employeeArr)
-console.log(user2.name)
-
-console.log(ids)
+// console.log(ids)
 
