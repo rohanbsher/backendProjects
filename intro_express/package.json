@@ -9,6 +9,8 @@
   "author": "Rohan",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "superheroes": "^3.0.0",
+    "supervillains": "^3.1.0"
   }
 }
