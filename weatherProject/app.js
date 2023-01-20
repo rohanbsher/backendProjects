@@ -28,19 +28,13 @@ app.post('/', (req, res) => {
 			const icon = weatherData.weather[0].icon
 			const image = "http://openweathermap.org/img/wn/"+icon+"@2x.png"
 			const temp = weatherData.main.temp
-			// const city = weatherData.name
 			const weatherDescription = weatherData.weather[0].description
-			// console.log(weatherDescription)
-			// console.log(weatherData);
-			// console.log(temp);
-			// console.log(weatherDescription);
-			// const tempInCel = Math.round(Number(temp) - 273.15, 4)
+			
 			res.write("<h1>Weather in " + cityName +" feels like : "+  weatherDescription+"</h1>")
 			res.write("<h1>Temperature is : " + temp +" celsius. </h1>")
 			res.write("<img src="+ image + ">")
 			res.send()
-			// res.send("temperature is : "+ temp)
-			// res.send("Weather is Ludhiana feels like : "+ weatherDescription)
+
 			// const object = {
 			// 	name : "Rohan",
 			// 	hobby : "soccer"
@@ -51,13 +45,7 @@ app.post('/', (req, res) => {
 			// console.log(JSON.stringify(weatherData.coord));
 		})
 	})
-
-	// res.send("Server is running" + res)
 })
-
-
-
-
 
 
 
