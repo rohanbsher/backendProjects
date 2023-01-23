@@ -2,3 +2,6 @@
 calculator/node_modules
 weatherProject/node_modules
 newsletter/newsletter-signup/node_modules
+blog/comments/node_modules
+blog/posts/node_modules
+
