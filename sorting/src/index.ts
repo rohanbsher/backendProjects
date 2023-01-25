@@ -1,27 +1,13 @@
-class Sorter {
-	// collection: number[];
+import { Sorter } from './Sorter';
+import { NumbersCollection } from './NumbersCollection';
+import { CharactersCollection } from './CharactersCollection';
 
-	constructor(public collection: number[]) {
-		// this.collection = collection;
-	}
+// const numbersCollection = new NumbersCollection([11, -2, 3, 0, -11, 12]);
+// const sorter = new Sorter(numbersCollection);
+// sorter.bubblSort();
+// console.log(numbersCollection.data);
 
-	sort(): void {
-
-		// const length = this.collection.length; [2, 6, 3, 5]
-		const { length } = this.collection;
-		for (let i = 0; i < length; i++) {
-			for (let j = 0; j < length - i - 1; j++) {
-				if(this.collection[j] > this.collection[j + 1]){
-					const leftHand = this.collection[j]
-					this.collection[j] = this.collection[j + 1]
-					this.collection[j + 1] = leftHand;
-				}
-			}
-		}
-
-	}
-}
-
-const sorter = new Sorter([10, 3, -5, 0]);
-sorter.sort();
-console.log(sorter.collection);
+const charactersCollection = new CharactersCollection('xmnbfyke');
+const sorter = new Sorter(charactersCollection);
+sorter.bubblSort();
+console.log(charactersCollection.data);
