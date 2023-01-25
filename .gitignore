@@ -131,3 +131,4 @@ dist
 locationAPI/.DS_Store
 locationAPI/maps/.DS_Store
 weatherAPI/.DS_Store
+.DS_Store
