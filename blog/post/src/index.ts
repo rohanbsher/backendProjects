@@ -1,9 +1,11 @@
 import express, { Request, Response } from 'express';
-import { randomBytes } from 'crypto';
 import bodyParser from 'body-parser';
+import cors from 'cors';
+import axios from 'axios';
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 
 interface PostProps {
 	id: number,
@@ -13,9 +15,6 @@ interface PostProps {
 const posts: PostProps[] = [{
 	id: 0,
 	title: 'Post 0'
-}, {
-	id: 1,
-	title: 'Post 1'
 }];
 
 
@@ -23,22 +22,37 @@ app.get('/posts', (req: Request, res: Response) => {
 	res.send(posts);
 });
 
-app.post('/posts', (req: Request, res: Response) => {
+app.post('/posts', async (req: Request, res: Response) => {
 
 	const id = Math.floor(Math.random()*1000); // hexadecimal number of 4 bytes
-	const { title } = req.body; //as PostProps;
+	const { title } = req.body as PostProps;
 
 	posts.push({ id, title });
 
 	let store: PostProps = {} as PostProps;
-	const addedPost = posts.filter((post) => {
+	posts.filter((post) => {
 		if (post.id === id) {
 			store = post;
-		}//
+		}
+	});
+
+	await axios.post('http://localhost:4005/events', {	
+		type: 'PostCreated',
+		data: {
+			id,
+			title
+		}
+	}).catch((err) => {
+		console.log(err.message);
 	});
 
 	res.status(201).send(store);
 
+});
+
+app.post('/events', (req: Request, res: Response) => {
+	console.log('Received Event Post', req.body.type);
+	res.send({});
 });
 
 app.listen(4000, () => {

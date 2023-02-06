@@ -14,37 +14,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
-const cors_1 = __importDefault(require("cors"));
 const axios_1 = __importDefault(require("axios"));
 const app = (0, express_1.default)();
+// associate a middleware function with the app
 app.use(body_parser_1.default.json());
-app.use((0, cors_1.default)());
-const commentsByPostId = {};
-app.get('/posts/:id/comments', (req, res) => {
-    res.send(commentsByPostId[req.params.id] || []);
-});
-app.post('/posts/:id/comments', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const commentId = Math.floor(Math.random() * 100000);
-    const { content } = req.body;
-    const comments = commentsByPostId[req.params.id] || [];
-    comments.push({ id: commentId, content });
-    commentsByPostId[req.params.id] = comments;
-    yield axios_1.default.post('http://localhost:4005/events', {
-        type: 'CommentCreated',
-        data: {
-            id: commentId,
-            content,
-            postId: req.params.id
-        }
-    }).catch((err) => {
+app.post('/events', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const events = req.body;
+    yield axios_1.default.post('http://localhost:4000/events', events).catch((err) => {
         console.log(err.message);
     });
-    res.status(201).send(comments);
+    yield axios_1.default.post('http://localhost:4001/events', events).catch((err) => {
+        console.log(err.message);
+    });
+    yield axios_1.default.post('http://localhost:4002/events', events).catch((err) => {
+        console.log(err.message);
+    });
+    res.send({ status: 'OK' });
 }));
-app.post('/events', (req, res) => {
-    console.log('Received Event Comment', req.body.type);
-    res.send({});
-});
-app.listen(4001, () => {
-    console.log('Listening on 4001');
+app.listen(4005, () => {
+    console.log('Listening on 4005');
 });
