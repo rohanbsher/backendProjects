@@ -33,12 +33,13 @@ app.post('/posts/:id/comments', (req, res) => __awaiter(void 0, void 0, void 0, 
         type: 'CommentCreated',
         data: {
             id: commentId,
-            content,
+            content: content,
             postId: req.params.id
         }
     }).catch((err) => {
         console.log(err.message);
     });
+    console.log("Comment Created " + commentId + " content : " + content + " post id : " + req.params.id);
     res.status(201).send(comments);
 }));
 app.post('/events', (req, res) => {

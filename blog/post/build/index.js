@@ -40,7 +40,7 @@ app.post('/posts', (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         type: 'PostCreated',
         data: {
             id,
-            title
+            title,
         }
     }).catch((err) => {
         console.log(err.message);

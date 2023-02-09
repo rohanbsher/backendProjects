@@ -40,7 +40,7 @@ app.post('/posts', async (req: Request, res: Response) => {
 		type: 'PostCreated',
 		data: {
 			id,
-			title
+			title,
 		}
 	}).catch((err) => {
 		console.log(err.message);

@@ -35,13 +35,14 @@ app.post('/posts/:id/comments', async (req: Request, res: Response) => {
 		type: 'CommentCreated',
 		data: {
 			id: commentId,
-			content,
+			content: content,
 			postId: req.params.id
 		}
 	}).catch((err) => {
 		console.log(err.message);
 	});
 
+	console.log("Comment Created " + commentId + " content : " + content + " post id : " + req.params.id);
 	res.status(201).send(comments);
 
 });
