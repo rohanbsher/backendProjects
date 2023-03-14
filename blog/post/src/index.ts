@@ -22,7 +22,7 @@ app.get('/posts', (req: Request, res: Response) => {
 	res.send(posts);
 });
 
-app.post('/posts', async (req: Request, res: Response) => {
+app.post('/posts/create', async (req: Request, res: Response) => {
 
 	const id = Math.floor(Math.random() * 1000); // hexadecimal number of 4 bytes
 	const { title } = req.body as PostProps;
@@ -36,7 +36,7 @@ app.post('/posts', async (req: Request, res: Response) => {
 		}
 	});
 
-	await axios.post('http://localhost:4005/events', {
+	await axios.post('http://event-bus-srv:4005/events', {
 		type: 'PostCreated',
 		data: {
 			id,

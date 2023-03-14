@@ -1,31 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: posts-depl
+  name: query-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: posts
+      app: query
   template:
     metadata:
       labels:
-        app: posts
+        app: query
     spec: 
       containers:
-        - name: posts
-          image: rbhandarisher/posts
+        - name: query
+          image: rbhandarisher/query
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: posts-clusterip-srv
+  name: query-srv
 spec:
   selector:
-    app: posts
+    app: query
   type: ClusterIP
   ports:
-    - name: posts
+    - name: query
       protocol: TCP
-      port: 4000
-      targetPort: 4000
+      port: 4002
+      targetPort: 4002
+  

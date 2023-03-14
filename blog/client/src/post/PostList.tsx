@@ -12,7 +12,7 @@ const PostList: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
 
   const fetchPosts = async () => {
-    const res = await axios.get('http://localhost:4000/posts');
+    const res = await axios.get('http://posts.com/posts');
     setPosts(res.data);
   };
 

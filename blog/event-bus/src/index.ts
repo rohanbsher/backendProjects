@@ -9,15 +9,15 @@ app.use(bodyParser.json());
 app.post('/events', async (req: Request, res: Response) => {
 	const events = req.body;
 
-	await axios.post('http://localhost:4000/events', events).catch((err) => {
+	await axios.post('http://posts-clusterip-srv:4000/events', events).catch((err) => {
 		console.log(err.message);
 	});
 
-	await axios.post('http://localhost:4001/events', events).catch((err) => {
+	await axios.post('http://comments-srv:4001/events', events).catch((err) => {
 		console.log(err.message);
 	});
 
-	await axios.post('http://localhost:4002/events', events).catch((err) => {
+	await axios.post('http://query-srv:4002/events', events).catch((err) => {
 		console.log(err.message);
 	});
 

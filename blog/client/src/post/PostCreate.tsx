@@ -8,7 +8,7 @@ const PostCreate: React.FC = () => {
     // don't let the browser submit the form
     event.preventDefault();
 
-    await axios.post('http://localhost:4000/posts', {
+    await axios.post('http://posts.com/posts/create', {
 	  title,
 	});
 
