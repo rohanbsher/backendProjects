@@ -24,7 +24,7 @@ app.get('/posts', (req: Request, res: Response) => {
 
 app.post('/posts', async (req: Request, res: Response) => {
 
-	const id = Math.floor(Math.random()*1000); // hexadecimal number of 4 bytes
+	const id = Math.floor(Math.random() * 1000); // hexadecimal number of 4 bytes
 	const { title } = req.body as PostProps;
 
 	posts.push({ id, title });
@@ -36,7 +36,7 @@ app.post('/posts', async (req: Request, res: Response) => {
 		}
 	});
 
-	await axios.post('http://localhost:4005/events', {	
+	await axios.post('http://localhost:4005/events', {
 		type: 'PostCreated',
 		data: {
 			id,
@@ -56,5 +56,6 @@ app.post('/events', (req: Request, res: Response) => {
 });
 
 app.listen(4000, () => {
-	console.log('Listening on port 4000');
+	console.log('V21');
+	console.log('Listening on port at 4000');
 });
